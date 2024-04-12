@@ -1,20 +1,18 @@
+import { useState, useRef } from 'react';
+import { StyleSheet, View, Platform } from 'react-native';
+import Tabs from './navigation';
+import {ApolloClient, ApolloProvider} from '@apollo/client';
+import client from './graphql/client';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+
 
 export default function App() {
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ApolloProvider client={client}>
+      <Tabs/>
+      <StatusBar style="light" translucent={false} backgroundColor={'#25292e'}/>
+    </ApolloProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
